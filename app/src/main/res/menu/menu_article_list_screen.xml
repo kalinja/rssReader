@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:activity=".RssArticleListScreen">
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_refresh"
+        android:title="@string/refresh"
+        android:icon="@mipmap/refresh"
+        android:orderInCategory="90"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_open_feed_config"
+        android:title="@string/feed_config"
+        android:orderInCategory="95"
+        app:showAsAction="never" />
+</menu>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cz.fit.ctu.rssreader" >
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <provider android:name=".database.DatabaseContentProvider"
+            android:authorities="cz.fit.ctu.rssreader" />
+        <service android:name=".background.UpdateService" android:enabled="true"/>
+        <receiver android:name="cz.fit.ctu.rssreader.background.EventAlarmReceiver" android:enabled="true">
+        </receiver>
+        <receiver android:name="cz.fit.ctu.rssreader.background.AlarmReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".uiprovider.screens.ArticleListScreen"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".uiprovider.screens.ArticleDetailScreen"
+            android:label="@string/title_activity_article_detail_screen">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".uiprovider.screens.ArticleListScreen" />
+        </activity>
+        <activity
+            android:name=".uiprovider.BaseActivity"
+            android:label="@string/title_activity_base" >
+        </activity>
+        <activity
+            android:name=".uiprovider.screens.FeedConfigScreen"
+            android:label="@string/title_activity_feed_config_screen" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cz.fit.ctu.rssreader.uiprovider.screens.ArticleListScreen" />
+        </activity>
+    </application>
+
+</manifest>
